@@ -1,4 +1,4 @@
-#include "LiquidCrystal_I2C.h"
+#include "LiquidCrystal_I2C_Tiny.h"
 #include <inttypes.h>
 #include <Arduino.h>
 #include <Wire.h>
@@ -21,6 +21,8 @@
 // Note, however, that resetting the Arduino doesn't reset the LCD, so we
 // can't assume that its in that state when a sketch starts (and the
 // LiquidCrystal constructor is called).
+
+// Modified 11/2015 Spence Konde to add support for ATTiny chips without I2C master capability
 
 LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_addr, uint8_t lcd_cols, uint8_t lcd_rows, uint8_t charsize)
 {
