@@ -3,7 +3,20 @@
 
 #include <inttypes.h>
 #include <Print.h>
-
+#ifdef TWSR
+#include <Wire.h>
+#define WIRENAME Wire
+#else
+#ifdef USIDR
+#define WIRENAME TinyWireM
+#include <TinyWireM.h>
+#else
+#define SOFTI2C
+#define WIRENAME softi2c
+#include <SoftI2CMaster.h>
+extern SoftI2CMaster softi2c;
+#endif
+#endif
 // commands
 #define LCD_CLEARDISPLAY 0x01
 #define LCD_RETURNHOME 0x02

@@ -1,7 +1,8 @@
 #include "LiquidCrystal_I2C_Tiny.h"
 #include <inttypes.h>
 #include <Arduino.h>
-#include <Wire.h>
+
+
 
 // When the display powers up, it is configured as follows:
 //
@@ -34,7 +35,9 @@ LiquidCrystal_I2C::LiquidCrystal_I2C(uint8_t lcd_addr, uint8_t lcd_cols, uint8_t
 }
 
 void LiquidCrystal_I2C::begin() {
-	Wire.begin();
+	#ifndef SOFTI2C
+	WIRENAME.begin();
+	#endif
 	_displayfunction = LCD_4BITMODE | LCD_1LINE | LCD_5x8DOTS;
 
 	if (_rows > 1) {
@@ -221,10 +224,10 @@ void LiquidCrystal_I2C::write4bits(uint8_t value) {
 	pulseEnable(value);
 }
 
-void LiquidCrystal_I2C::expanderWrite(uint8_t _data){                                        
-	Wire.beginTransmission(_addr);
-	Wire.write((int)(_data) | _backlightval);
-	Wire.endTransmission();   
+void LiquidCrystal_I2C::expanderWrite(uint8_t _data){
+	WIRENAME.beginTransmission(_addr);
+	WIRENAME.write((int)(_data) | _backlightval);
+	WIRENAME.endTransmission();   
 }
 
 void LiquidCrystal_I2C::pulseEnable(uint8_t _data){

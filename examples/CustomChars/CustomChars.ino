@@ -1,5 +1,12 @@
-#include <Wire.h>
-#include <LiquidCrystal_I2C.h>
+#include <LiquidCrystal_I2C_Tiny.h>
+
+//#include <Wire.h>
+//#include <TinyWireM.h>
+#include <SoftI2CMaster.h> 
+//comment out all but one of the above library includes. 
+
+//if using SoftI2CMaster (ie, on tiny841 or 828), uncomment this, otherwise comment out. 
+SoftI2CMaster softi2c=SoftI2CMaster( 7, 2, 0 ); //sclPin=7, sdaPin=2
 
 uint8_t bell[8]  = {0x4, 0xe, 0xe, 0xe, 0x1f, 0x0, 0x4};
 uint8_t note[8]  = {0x2, 0x3, 0x2, 0xe, 0x1e, 0xc, 0x0};
