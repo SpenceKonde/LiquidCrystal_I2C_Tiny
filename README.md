@@ -1,3 +1,8 @@
+# STOP #
+# IF USING MY CORE, DO NOT USE THIS LIBRARY OR TinyWireM/SoftI2CMaster #
+# MY CORE NOW HAS UNIVERSAL Wire.h LIBRARY, AND WILL WORK WITH UNMODIFIED LiquidCrystal_I2C LIBRARY #
+
+
 # Overview #
 This fork of the LiquidCrystal_I2C library supports devices without hardware I2C support, using USI (like many tinies) or a full software implementation (for the 841 and 828). 
 
